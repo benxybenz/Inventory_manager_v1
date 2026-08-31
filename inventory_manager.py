@@ -1,3 +1,4 @@
+import json
 print("This is version 2")
 class Product:
 
@@ -142,8 +143,22 @@ class Inventory:
         pass
 
 
-       
+    def load_in_json(self):
+        with open ("inventory.json","r") as f:
+            data = json.load(f)
+        self.inventory.clear()
+        for product_data in data:
+            product = Product(
+            product_data["id"],
+            product_data["name"],
+            product_data["price"],
+            product_data["quantity"],
+            product_data["category"]
+        )
+            self.inventory.append(product)
         
+        
+
 #---------------------- MENU -------------------------#
 
 print("Welcome to Inventory manager  ")
