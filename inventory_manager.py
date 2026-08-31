@@ -1,3 +1,4 @@
+print("This is version 2")
 class Product:
 
     def __init__(self,id,name,price,quantity,category):
@@ -137,8 +138,8 @@ class Inventory:
 
     #------------------------ Connecting OOP and Json ---------------------#
   
-  def writing_in_json(self):
-    pass
+    def writing_in_json(self):
+        pass
 
 
        
