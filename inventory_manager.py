@@ -1,3 +1,5 @@
+import json
+print("This is version B")
 class Product:
 
     def __init__(self,id,name,price,quantity,category):
@@ -137,12 +139,37 @@ class Inventory:
 
     #------------------------ Connecting OOP and Json ---------------------#
   
-  def writing_in_json(self):
-    pass
+    def writing_in_json(self):
+        data = []
+        for inventory in self.inventory:
+            inventory_data = {}
+            inventory_data["id"] = inventory.id
+            inventory_data["name"]  = inventory.name
+            inventory_data["price"] = inventory.price
+            inventory_data["quantity"] = inventory.quantity
+            inventory_data["category"] = inventory.category
+            data.append(inventory_data)
+
+        with open ("inventory.json" , "w" ) as f:
+            json.dump(data , f ,indent = 2 )
 
 
-       
+    def load_in_json(self):
+        with open ("inventory.json","r") as f:
+            data = json.load(f)
+        self.inventory.clear()
+        for product_data in data:
+            product = Product(
+            product_data["id"],
+            product_data["name"],
+            product_data["price"],
+            product_data["quantity"],
+            product_data["category"]
+        )
+            self.inventory.append(product)
         
+        
+
 #---------------------- MENU -------------------------#
 
 print("Welcome to Inventory manager  ")
