@@ -1,5 +1,10 @@
 import json
+
+print("This is a practice for pullout request ")
+
 print("This is version 2")
+
+
 class Product:
 
     def __init__(self,id,name,price,quantity,category):
